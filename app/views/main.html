@@ -1,0 +1,268 @@
+<!-- Modal -->
+
+
+<div class="modal fade" id="myModal" role="dialog">
+
+
+
+
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Repeat After</h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="checkbox">
+          <label>Repeats Every:</label>
+        </div>
+        <div class="checkbox">
+          <span class="col-md-12"><input type="radio" name="cron" value="min"> Minutes</span>
+        </div>
+        <div class="checkbox">
+          <span class="col-md-12"><input type="radio" name="cron" value="hrs"> Hours</span>
+        </div>
+        <div class="checkbox">
+          <span class="col-md-12"><input type="radio" name="cron" value="days"> Days</span>
+        </div>
+        <div class="checkbox">
+          <span class="col-md-12"><input type="radio" name="cron" value="wks"> Weeks</span>
+        </div>
+        <div class="checkbox">
+          <span class="col-md-12"><input type="radio" name="cron" value="mnths">Months</span>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="hangMap" class="hang_map">
+
+  <div class="panel">
+
+    <div class="panel-header">
+
+      <i class="fa fa-envelope"></i>
+      <a ng-click="isDisplayed = 3">Send A Message</a>
+      <span>|</span>
+      <a ng-click="getMessages()">Message History</a>
+      <span>|</span>
+      <a ng-click="isDisplayed = 2">Scheduled Messages</a>
+    </div>
+
+    <div ng-show="isDisplayed == 1" class="panel-body">
+
+      <table class="table table striped">
+        <tr>
+          <th>Message Id</th>
+          <th>Message</th>
+          <th>Status</th>
+          <th>No. Of Recipient</th>
+          <th>No. Of Deliveries</th>
+
+        </tr>
+
+
+        <tr ng-repeat = "message in messages">
+
+          <td ng-repeat= "val in message">{{val}}</td>
+
+        </tr>
+      </table>
+    </div>
+    <div ng-show="isDisplayed == 2" class="panel-body">
+      <table class="table table striped">
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Message</th>
+          <th>List Of Drivers</th>
+          <th>Status</th>
+
+        </tr>
+
+        <tr>
+          <td>20115-10-10</td>
+          <td>8:50</td>
+          <td>Hello 123</td>
+          <td>abc,xyz</td>
+          <td>1</td>
+          <td>
+            <button class="btn btn-sm">Edit</button>
+            &nbsp;&nbsp;
+            <button class="btn btn-sm">Delete</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div ng-show="isDisplayed == 3">
+
+
+      <div class="panel-body">
+
+
+        <h4>Reciepients</h4>
+
+        <div class="col-md-12">
+          <span class="col-md-2"><input type="radio" value="All" ng-model="isOption" name="option">&nbsp; All</span>
+          <span class="col-md-4"><input type="radio" value="Single" ng-model="isOption" name="option">&nbsp; Select Drivers</span>
+          <!--<span class="col-md-5"><input type="radio" value="Multiple" ng-model="isOption" name="option">&nbsp; Select multiple</span>-->
+        </div>
+
+        <!--Options For Multiple Drivers-->
+        <!--<div class="col-md-12" ng-show="isOption == 'Multiple'">-->
+          <!--<label>Select Drivers By:</label> <select>-->
+          <!--<option>Location</option>-->
+          <!--<option>Medallion</option>-->
+          <!--<option>Driving License</option>-->
+
+        <!--</select>-->
+
+          <!--<button ng-click="qty = 1">Show</button>-->
+          <!--<button ng-click="qty = 0">Hide</button>-->
+        <!--</div>-->
+
+        <!--Options for selecting a single driver-->
+
+
+        <div class="col-md-12" ng-show="isOption == 'Single'">
+
+
+          <label class="form-label" ng-hide="qty">Search : </label>
+
+   <span class="col-md-12">
+              <button ng-click="qty = 0" ng-show="qty" class="btn btn-sm btn-primary">Drivers Search</button></span>
+
+
+          <div class="col-md-12" ng-hide="qty">
+
+            <div>
+            <angucomplete class="col-md-4" id="auto_assign_phone"
+                          placeholder="Search phone"
+                          selectedobject="add_telephone"
+                          localdata="all_drivers"
+                          searchfields="telephone"
+                          titlefield="telephone "
+                          minlength="3"
+                          inputclass="form-control"
+            />
+            </div>
+            <div>
+
+            <angucomplete class="col-md-4" id="auto_assign_name"
+                          placeholder="Search name"
+                          selectedobject="add_name"
+                          selectedobject="telephone"
+                          localdata="all_drivers"
+                          searchfields="display_name"
+                          titlefield="display_name"
+                          minlength="3"
+                          inputclass="form-control"
+            />
+            </div>
+            <div>
+            <angucomplete class="col-md-4" id="auto_assign_medallions"
+                          placeholder="Driving License"
+                          selectedobject="add_medallions"
+                          localdata="all_drivers_medallions"
+                          searchfields="number"
+                          titlefield="number"
+                          minlength="3"
+                          inputclass="form-control"
+            />
+            </div>
+
+            <div class="col-md-12" ng-repeat="val in driverData">
+
+
+              <span class="col-md-3" >{{val.xid}}</span>
+              <span class="col-md-5" >{{val.display_name}}</span>
+              <span class="col-md-3" >{{val.telephone}}</span>
+              <span class="col-md-1"><i class="fa fa-times" ng-click="removeData($index)"></i></span>
+
+
+            </div>
+
+               <span class="col-md-12">
+              <button ng-click="qty = 1" class="btn btn-sm btn-primary">Search Location</button></span>
+          </div>
+
+
+
+
+        </div>
+
+        <div class="col-md-12">
+
+          <label class="form-label" for="driver_message">Message</label>
+
+          <textarea class="form-control" ng-model="messageText" id="driver_message" name="driver_message"></textarea>
+          <!--<div class="col-md-12">-->
+
+
+          <div class="checkbox">
+            <label><input type="checkbox" value=""> Send Delivery Reciept</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" ng-model="val"> Repeat After</label>
+          </div>
+
+          <!--</div>-->
+
+
+        </div>
+
+        <div class="col-md-12">
+
+          <div class="col-md-3"><input type="button" class="btn btn-primary" ng-click="sendMessage()" value="Send Now"></div>
+          <div class="col-md-3"><input type="button" class="btn btn-primary"  ng-click="isActive = 1" value="Schedule"></div>
+
+        </div>
+
+
+      </div>
+
+      <div style="width:140%" ng-show="isActive == 1"  class="col-md-offset-1">
+
+        <div style="overflow:hidden;">
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-8">
+                <div id="datetimepicker12"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+
+</div>
+<input id="pac-input" class="controls" ng-show="qty" type="text" placeholder="Search Box">
+<div class="block-border fade"  ng-show="qty" id="map" style="height: 100vh;">
+<script>
+  $(function () {
+
+$('#datetimepicker12').datetimepicker({
+inline: true,
+sideBySide: true
+})
+});
+</script>
+</div>
+

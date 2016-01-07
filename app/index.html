@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+
+
+
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+  <link rel="stylesheet" href="../bower_components/angucomplete-alt/angucomplete-alt.css" />
+
+
+  <link rel="stylesheet" href="styles/main.css">
+
+  <!-- CSS (load bootstrap) -->
+  <style>
+    .navbar { border-radius:0; }
+  </style>
+
+  <!-- JS (load angular, ui-router, and our custom js file) -->
+
+</head>
+
+<!-- apply our angular app to our site -->
+<body ng-app="flywheelInitApp">
+
+<!-- NAVIGATION -->
+
+
+<!-- MAIN CONTENT -->
+<div class="fluid-container">
+
+  <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+  <div ui-view></div>
+
+</div>
+
+<script>
+  !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+      (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+    r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+  }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-XXXXX-X');
+  ga('send', 'pageview');
+</script>
+
+
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../bower_components/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="../bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+
+<script src="http://code.angularjs.org/1.3.0-beta.2/angular.min.js"></script>
+<script src="http://code.angularjs.org/1.3.0-beta.2/angular-animate.min.js"></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+
+
+
+
+
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp&libraries=places,drawing,geometry&sensor=false"></script>
+<script src="//cdn.rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+<!--<script type="text/javascript" src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+<script type="text/javascript" src="../bower_components/angucomplete-alt/angucomplete-alt.js"></script>
+
+
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+
+</body>
+</html>
