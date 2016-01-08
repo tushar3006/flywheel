@@ -11,32 +11,31 @@
 
 
 
-var flywheel = angular
+var yelo= angular
   .module('flywheelInitApp', [
     'ui.router',
     'angucomplete',
-    'ngAnimate'
+    'ngAnimate',
+    'datatables'
   ])
 
 
 
-flywheel.config(function($stateProvider, $urlRouterProvider) {
+yelo.config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('/drivers');
+  $urlRouterProvider.otherwise('/yelo');
 
   $stateProvider
 
   // HOME STATES AND NESTED VIEWS ========================================
-    .state('drivers', {
-      url: '/drivers',
-      templateUrl: 'views/app.html'
-    })
-
-    // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-    .state('drivers.messages', {
-      url: '/messages',
-      templateUrl: 'views/main.html',
-      controller:'MainCtrl'
+    .state('yelo', {
+      url: '/yelo',
+      templateUrl: 'views/app.html',
+      controller:'yeloMainCtrl'
+    }).state('yelo.analytics', {
+      url: '/customer',
+      templateUrl: 'views/yeloMain.html',
+      controller:'yeloMainCtrl'
     })
 
 });

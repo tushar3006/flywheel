@@ -1,0 +1,49 @@
+<div ng-controller="yeloMainCtrl">
+
+
+
+  <angucomplete class="col-md-4" id="auto_assign_phone"
+                placeholder="Search User Email"
+                selectedobject="selected_user"
+                localdata="all_users"
+                searchfields="email"
+                titlefield="email"
+                minlength="3"
+                inputclass="form-control"
+  /> <angucomplete class="col-md-4" id="auto_assign_phone"
+                placeholder="Search User Phone"
+                selectedobject="selected_user"
+                localdata="all_users"
+                searchfields="mobile_number"
+                titlefield="mobile_number"
+                minlength="3"
+                inputclass="form-control"
+  /> <angucomplete class="col-md-4" id="auto_assign_phone"
+                placeholder="Search User Name"
+                selectedobject="selected_user"
+                localdata="all_users"
+                searchfields="name"
+                titlefield="name"
+                minlength="3"
+                inputclass="form-control"
+  />
+
+
+  <table datatable="" class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>First name</th>
+      <th>Last name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat = "user in all_users">
+      <td ng-repeat="">1</td>
+
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>
